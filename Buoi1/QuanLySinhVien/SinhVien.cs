@@ -7,10 +7,10 @@ namespace QuanLySinhVien
 {
     internal class SinhVien
     {
-        public String MaSinhVien { get; set; }
+        public string MaSinhVien { get; set; }
 
-        private String _hoTen;
-        public String HoTen
+        private string _hoTen;
+        public string HoTen
         {
             get { return _hoTen; }
             set
@@ -19,14 +19,24 @@ namespace QuanLySinhVien
                 {
                     throw new ArgumentException("Ho ten khong duoc de trong!");
                 }
-                _hoTen = value;
+                else if (value.Any(char.IsDigit)){
+                    throw new ArgumentException("Họ tên không được có chữ số!");
+                } ;
+                string[] text = value.Split();
+                value = "";
+                foreach (string word in text)
+                {
+                    if (string.IsNullOrEmpty(word)) continue;
+                    value += word[..1].ToUpper() + word[1..].ToLower() + " ";
+                }
+                _hoTen = value.Trim();
             }
         }
-        public String NgaySinh { get; set; }
-        public String GioiTinh { get; set; }
+        public string NgaySinh { get; set; }
+        public string GioiTinh { get; set; }
 
-        private String? _email;
-        public String? Email
+        private string? _email;
+        public string? Email
         {
             get { return _email; }
             set
@@ -39,8 +49,8 @@ namespace QuanLySinhVien
                 _email = value;
             }
         }
-        public String SoDienThoai { get; set; }
-        public String NganhHoc { get; set; }
+        public string SoDienThoai { get; set; }
+        public string NganhHoc { get; set; }
 
         private float _diemTrungBinh;
         public float DiemTrungBinh
@@ -56,7 +66,35 @@ namespace QuanLySinhVien
             }
         }
 
-        public String TrangThaiHocTap { get; set; }
+        public string TrangThaiHocTap { get; set; }
 
+        public SinhVien(string maSinhVien, string hoTen, string ngaySinh, string gioiTinh, string? email, string soDienThoai, string nganhHoc, float diemTrungBinh, string trangThaiHocTap)
+        {
+            this.MaSinhVien = maSinhVien;
+            this.HoTen = hoTen;
+            this.NgaySinh = ngaySinh;
+            this.GioiTinh = gioiTinh;
+            this.Email = email;
+            this.SoDienThoai = soDienThoai;
+            this.NganhHoc = nganhHoc;
+            this.DiemTrungBinh = diemTrungBinh;
+            this.TrangThaiHocTap = trangThaiHocTap;
+        }
+        public void Update(SinhVien sv)
+        {
+            this.HoTen = sv.HoTen;
+            this.NgaySinh = sv.NgaySinh;
+            this.GioiTinh = sv.GioiTinh;
+            this.Email = sv.Email;
+            this.SoDienThoai = sv.SoDienThoai;
+            this.NganhHoc = sv.NganhHoc;
+            this.DiemTrungBinh = sv.DiemTrungBinh;
+            this.TrangThaiHocTap = sv.TrangThaiHocTap;
+        }
+        public string GetTen()
+        {
+            string[] texts = _hoTen.Split();
+            return texts[^1];
+        }
     }
 }
