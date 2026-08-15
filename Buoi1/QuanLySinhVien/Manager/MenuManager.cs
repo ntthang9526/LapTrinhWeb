@@ -144,13 +144,16 @@ namespace QuanLySinhVien.Manager
                     case 6:
                         Console.Clear();
                         string studentID6 = InputHelper.ReadNonEmptyString("Nhap ma sinh vien can xoa: ").ToUpper();
-                        if (_service.XoaSinhVien(studentID6))
+                        if (CheckYNOption(InputHelper.ReadOption("\n\nBan co chac chan muon xoa? Y/N: ")))
                         {
-                            Console.WriteLine("Xoa thanh cong!");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Khong tim thay sinh vien!");
+                            if (_service.XoaSinhVien(studentID6))
+                            {
+                                Console.WriteLine("Xoa thanh cong!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Khong tim thay sinh vien!");
+                            }
                         }
 
                         if (CheckYNOption(InputHelper.ReadOption("\n\nBan co muon tiep tuc su dung? Y/N: "))) continue;
@@ -237,7 +240,6 @@ namespace QuanLySinhVien.Manager
             option.ToUpper();
             if (option == "Y" || option == "y")
             {
-                Console.Clear();
                 return true;
             }
             return false;

@@ -3,7 +3,6 @@ using QuanLySinhVien.Manager;
 using QuanLySinhVien.Services;
 using QuanLySinhVien.View;
 using System.Text;
-// Windows Form App
 public partial class Program
 {
     private static void Main(string[] args)
