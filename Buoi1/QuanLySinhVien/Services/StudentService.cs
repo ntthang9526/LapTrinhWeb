@@ -10,7 +10,7 @@ namespace QuanLySinhVien.Services
     internal class StudentService
     {
         private List<Student> danhSachSinhVien = new List<Student>();
-        private StudentValidator studentValidator = new();
+        private readonly StudentValidator studentValidator = new();
         public List<Student> DanhSachSinhVien{
             get
             {
