@@ -85,7 +85,7 @@ namespace QuanLySinhVien.Manager
                     case 3:
                         Console.Clear();
                         string ID = InputHelper.ReadNonEmptyString("Nhap ma sinh vien can tim: ").ToUpper();
-                        Student sv = _service.TimSinhVienTheoMa(ID);
+                        Student? sv = _service.TimSinhVienTheoMa(ID);
                         if (sv != null)
                         {
                             _view.HienThiThongTin(sv);
@@ -115,7 +115,7 @@ namespace QuanLySinhVien.Manager
                     case 5:
                         Console.Clear();
                         string studentID5 = InputHelper.ReadNonEmptyString("Nhap ma sinh vien can cap nhat: ").ToUpper();
-                        Student student5 = _service.TimSinhVienTheoMa(studentID5);
+                        Student? student5 = _service.TimSinhVienTheoMa(studentID5);
                         if (student5 != null)
                         {
                             if (CheckYNOption(InputHelper.ReadOption("Sinh vien da ton tai, ban co muon cap nhat? (Y/N): ")))

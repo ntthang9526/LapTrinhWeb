@@ -69,11 +69,12 @@ namespace QuanLySinhVien.Services
             }
             return false;
         }
-        public Student TimSinhVienTheoMa(string maSinhVien)
+        public Student? TimSinhVienTheoMa(string maSinhVien)
         {
-            return danhSachSinhVien.FirstOrDefault(sv => sv.MaSinhVien == maSinhVien);
+            Student? student = danhSachSinhVien.FirstOrDefault(sv => sv.MaSinhVien == maSinhVien);
+            return student;
+        }     
 
-        }
         public List<Student> TimSinhVienTheoTen(string text) 
         {
             text = text.ToLower();
